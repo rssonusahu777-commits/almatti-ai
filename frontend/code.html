@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ethereal AI Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#3e3f43",
+              "primary-container": "#e4e2e4",
+              "error": "#9f403d",
+              "secondary-container": "#e3e2e7",
+              "on-secondary": "#faf8fe",
+              "on-secondary-fixed-variant": "#5b5b60",
+              "error-dim": "#4e0309",
+              "outline-variant": "#acb3b8",
+              "tertiary": "#6f48b8",
+              "background": "#f9f9fb",
+              "on-tertiary-fixed": "#000000",
+              "surface-bright": "#f9f9fb",
+              "surface-container-high": "#e4e9ee",
+              "on-primary-container": "#525154",
+              "inverse-surface": "#0c0e10",
+              "tertiary-container": "#b088fe",
+              "on-tertiary": "#fef7ff",
+              "tertiary-fixed-dim": "#a27bef",
+              "on-primary-fixed-variant": "#5c5b5d",
+              "on-error": "#fff7f6",
+              "on-secondary-container": "#515156",
+              "surface-container": "#ebeef2",
+              "tertiary-dim": "#623aab",
+              "surface-container-lowest": "#ffffff",
+              "inverse-on-surface": "#9c9d9f",
+              "on-primary-fixed": "#3f3f41",
+              "surface-tint": "#5f5e60",
+              "secondary-fixed": "#e3e2e7",
+              "surface-variant": "#dde3e9",
+              "secondary-fixed-dim": "#d5d4d9",
+              "on-tertiary-fixed-variant": "#37007d",
+              "on-primary": "#faf7f9",
+              "on-error-container": "#752121",
+              "outline": "#757c81",
+              "on-surface": "#2d3338",
+              "primary-fixed": "#e4e2e4",
+              "on-surface-variant": "#596065",
+              "on-tertiary-container": "#2b0065",
+              "inverse-primary": "#ffffff",
+              "surface-container-low": "#f2f4f6",
+              "on-background": "#2d3338",
+              "surface-container-highest": "#dde3e9",
+              "primary-dim": "#535254",
+              "surface-dim": "#d3dbe2",
+              "tertiary-fixed": "#b088fe",
+              "error-container": "#fe8983",
+              "primary-fixed-dim": "#d6d3d6",
+              "secondary-dim": "#525357",
+              "surface": "#f9f9fb",
+              "secondary": "#5e5f63",
+              "primary": "#5f5e60"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"],
+              "mono": ["JetBrains Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .aura-glow {
+            box-shadow: 0 0 20px 2px rgba(176, 136, 254, 0.15);
+        }
+        .silver-gradient {
+            background: linear-gradient(135deg, #f9f9fb 0%, #e4e9ee 100%);
+        }
+        .cta-gradient {
+            background: linear-gradient(to bottom, #5f5e60, #535254);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-white/20 bg-slate-100 dark:bg-slate-950/40 backdrop-blur-2xl flex flex-col p-4 gap-2 z-40 transition-transform duration-300 ease-in-out">
+<div class="flex items-center gap-3 px-2 mb-8 mt-2">
+<div class="w-10 h-10 rounded-xl bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-tertiary" data-icon="diamond" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<div>
+<h1 class="text-lg font-bold text-slate-900 dark:text-slate-100 leading-tight">AI Cluster</h1>
+<p class="text-[10px] font-medium tracking-widest text-slate-500 uppercase">Advanced Intelligence</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<button class="bg-white dark:bg-slate-800 text-slate-900 dark:text-white rounded-xl shadow-sm flex items-center gap-3 px-4 py-3 font-['Inter'] text-sm tracking-wide font-medium transition-all hover:bg-slate-200/50 dark:hover:bg-slate-800/30">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span>New Chat</span>
+</button>
+<button class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 flex items-center gap-3 px-4 py-3 font-['Inter'] text-sm tracking-wide font-medium transition-all hover:bg-slate-200/50 dark:hover:bg-slate-800/30">
+<span class="material-symbols-outlined" data-icon="folder">folder</span>
+<span>My Stuff</span>
+</button>
+<button class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 flex items-center gap-3 px-4 py-3 font-['Inter'] text-sm tracking-wide font-medium transition-all hover:bg-slate-200/50 dark:hover:bg-slate-800/30">
+<span class="material-symbols-outlined" data-icon="diamond">diamond</span>
+<span>Gems / Tools</span>
+</button>
+</nav>
+<div class="mt-auto pt-4 border-t border-slate-200/50 dark:border-slate-800/50">
+<button class="w-full text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 flex items-center gap-3 px-4 py-3 font-['Inter'] text-sm tracking-wide font-medium transition-all hover:bg-slate-200/50 dark:hover:bg-slate-800/30">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</button>
+<div class="mt-4 flex items-center gap-3 px-2 py-2">
+<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man in a minimalist grey studio with soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk-Am9guFFGKqMd5TRCtmStmPTTCy3dIaiZScysPA0d6rpgWgDAHU4YrOfwGKNJYC9VvOumsnVF_fRy6WINFRkqbN5IOB60u9ktldO2gux-7KVykjmlm0TSkqZMeBY4-uHG7hEjYJQ13s6xuI_tgsZJFU9DLSLdHkrxrW_oEhmzIUpTBkvqweGx3xmHCb46CH7WXCJFsDiUQVoBIvkkkfKmoM3ub1yj1nCZ5UYTkCBEJMOcpLXstVMniUsTPZ6xg_QE8lFqt3lRkzt"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-xs font-bold text-on-surface truncate">Alex Sterling</p>
+<p class="text-[10px] text-on-surface-variant truncate">Pro Plan Active</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-64 min-h-screen overflow-y-auto silver-gradient relative">
+<!-- TopNavBar -->
+<header class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl docked full-width top-0 sticky z-30 shadow-[0_20px_40px_rgba(45,51,56,0.06)] flex justify-between items-center px-8 py-4 w-full">
+<div class="text-xl font-medium text-slate-900 dark:text-white font-['Inter'] tracking-tight">Ethereal AI</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-900 dark:text-white font-semibold font-['Inter'] font-light tracking-tight transition-all" href="#">Workspace</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-['Inter'] font-light tracking-tight transition-all" href="#">Analytics</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-['Inter'] font-light tracking-tight transition-all" href="#">Library</a>
+</nav>
+<div class="w-px h-4 bg-outline-variant/20 mx-2"></div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-all text-slate-700 dark:text-slate-200">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<div class="max-w-5xl mx-auto px-8 pt-20 pb-20">
+<!-- Hero Section -->
+<div class="mb-16">
+<h2 class="text-[3.5rem] font-light text-on-surface leading-tight tracking-tight mb-2">What shall we build today?</h2>
+<p class="text-lg text-on-surface-variant font-normal opacity-70">Advanced Intelligence Cluster • System Status: Optimal</p>
+</div>
+<!-- Main Input Area -->
+<div class="mb-20">
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-tertiary/20 to-primary/10 rounded-[2rem] blur opacity-25 group-focus-within:opacity-100 transition duration-1000 group-focus-within:duration-200"></div>
+<div class="relative flex items-center bg-surface-container-high rounded-xl p-2 pr-4 shadow-sm">
+<input autofocus="" class="w-full bg-transparent border-none focus:ring-0 py-6 px-8 text-xl font-body text-on-surface placeholder:text-outline-variant/60" placeholder="Describe your task..." type="text"/>
+<button class="cta-gradient text-on-primary px-8 py-4 rounded-xl font-semibold flex items-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+<span>Execute Task</span>
+<span class="material-symbols-outlined text-sm" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</button>
+</div>
+</div>
+<div class="mt-6 flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+<span class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-sm border border-white/50 hover:bg-white transition-colors cursor-pointer whitespace-nowrap">Generate Marketing Strategy</span>
+<span class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-sm border border-white/50 hover:bg-white transition-colors cursor-pointer whitespace-nowrap">Audit System Architecture</span>
+<span class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-sm border border-white/50 hover:bg-white transition-colors cursor-pointer whitespace-nowrap">Draft Quarterly Report</span>
+</div>
+</div>
+<!-- Agent Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_20px_40px_rgba(45,51,56,0.06)] border border-white/40 group hover:-translate-y-1 hover:shadow-[0_25px_50px_rgba(45,51,56,0.08)] transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-tertiary/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary transition-colors" data-icon="web">web</span>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-title-md font-semibold text-on-surface">Web Builder</h3>
+<span class="px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100">Ready</span>
+</div>
+<p class="text-sm text-on-surface-variant opacity-80 leading-relaxed mb-6">Create high-fidelity landing pages from prompts.</p>
+<div class="pt-4 border-t border-outline-variant/10">
+<button class="text-tertiary text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">
+                            Initialize <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_20px_40px_rgba(45,51,56,0.06)] border border-white/40 group hover:-translate-y-1 hover:shadow-[0_25px_50px_rgba(45,51,56,0.08)] transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-tertiary/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary transition-colors" data-icon="auto_stories">auto_stories</span>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-title-md font-semibold text-on-surface">Content + PPT</h3>
+<span class="px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-50 text-amber-600 border border-amber-100">Draft</span>
+</div>
+<p class="text-sm text-on-surface-variant opacity-80 leading-relaxed mb-6">Synthesize long-form data into presentations.</p>
+<div class="pt-4 border-t border-outline-variant/10">
+<button class="text-tertiary text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">
+                            Initialize <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_20px_40px_rgba(45,51,56,0.06)] border border-white/40 group hover:-translate-y-1 hover:shadow-[0_25px_50px_rgba(45,51,56,0.08)] transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-tertiary/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary transition-colors" data-icon="forum">forum</span>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-title-md font-semibold text-on-surface">Communication</h3>
+<span class="px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-blue-600 border border-blue-100">Synced</span>
+</div>
+<p class="text-sm text-on-surface-variant opacity-80 leading-relaxed mb-6">Manage outreach and internal comms logic.</p>
+<div class="pt-4 border-t border-outline-variant/10">
+<button class="text-tertiary text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">
+                            Initialize <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-[0_20px_40px_rgba(45,51,56,0.06)] border border-white/40 group hover:-translate-y-1 hover:shadow-[0_25px_50px_rgba(45,51,56,0.08)] transition-all duration-300">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-tertiary/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary transition-colors" data-icon="folder_managed">folder_managed</span>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-title-md font-semibold text-on-surface">File Manager</h3>
+<span class="px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100">Ready</span>
+</div>
+<p class="text-sm text-on-surface-variant opacity-80 leading-relaxed mb-6">Automated organization and categorization.</p>
+<div class="pt-4 border-t border-outline-variant/10">
+<button class="text-tertiary text-xs font-bold uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">
+                            Initialize <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Controller Log -->
+<div class="glass-panel aura-glow rounded-xl p-8 border border-white shadow-xl overflow-hidden">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<h4 class="text-label-md uppercase tracking-widest text-on-surface font-bold">Controller Log</h4>
+</div>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg cursor-pointer hover:text-tertiary" data-icon="terminal">terminal</span>
+<span class="material-symbols-outlined text-on-surface-variant text-lg cursor-pointer hover:text-tertiary" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+<div class="font-mono text-sm leading-relaxed space-y-3 max-h-48 overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-slate-200">
+<div class="flex gap-4">
+<span class="text-outline-variant shrink-0">[14:22:01]</span>
+<span class="text-tertiary-dim">SYSTEM:</span>
+<span class="text-on-surface-variant">Cluster initialization complete. All neural pathways verified.</span>
+</div>
+<div class="flex gap-4">
+<span class="text-outline-variant shrink-0">[14:22:05]</span>
+<span class="text-tertiary-dim">AGENT:</span>
+<span class="text-on-surface-variant">Web Builder standby. Latency 14ms. Ready for deployment.</span>
+</div>
+<div class="flex gap-4">
+<span class="text-outline-variant shrink-0">[14:23:12]</span>
+<span class="text-tertiary-dim">QUERY:</span>
+<span class="text-on-surface italic opacity-80">Listening for user input...</span>
+</div>
+<div class="flex gap-4 opacity-40">
+<span class="text-outline-variant shrink-0">[14:23:45]</span>
+<span class="text-tertiary-dim">STATUS:</span>
+<span class="text-on-surface-variant">Heartbeat pulse confirmed. T-Alpha active.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Accent Glows -->
+<div class="fixed top-[-10%] right-[-5%] w-[500px] h-[500px] bg-tertiary-container/10 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="fixed bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-primary-container/20 rounded-full blur-[100px] pointer-events-none"></div>
+</main>
+<script>
+const API_URL = "https://almatti-ai.onrender.com";
+
+// Get input and button
+const input = document.querySelector("input");
+const button = document.querySelector("button");
+
+// Add click event
+button.addEventListener("click", async () => {
+    const message = input.value;
+
+    if (!message) {
+        alert("Enter something first");
+        return;
+    }
+
+    try {
+        const res = await fetch(`${API_URL}/api/chats`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: message
+            })
+        });
+
+        const data = await res.json();
+        alert(JSON.stringify(data)); // show response
+
+    } catch (err) {
+        console.error(err);
+        alert("Error connecting backend");
+    }
+});
+</script>
+</body></html>
