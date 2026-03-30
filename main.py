@@ -85,20 +85,14 @@ def list_chats():
     conn.close()
     return [dict(row) for row in rows]
 
+class ChatRequest(BaseModel):
+    message: str
+
 @app.post("/api/chats")
-def create_chat(chat: ChatCreate):
-    conn = get_db()
-    chat_id = str(uuid.uuid4())
-    conn.execute(
-        "INSERT INTO chats (id, title, messages) VALUES (?, ?, ?)",
-        (chat_id, chat.title, "[]")
-    )
-    conn.commit()
-    new_chat = conn.execute("SELECT * FROM chats WHERE id = ?", (chat_id,)).fetchone()
-    conn.close()
-    row = dict(new_chat)
-    row["messages"] = json.loads(row["messages"])
-    return row
+def chat(req: ChatRequest):
+    return {
+        "reply": f"You said: {req.message}"
+    }
 
 @app.get("/api/chats/{chat_id}")
 def get_chat(chat_id: str):
