@@ -25,5 +25,5 @@ def home():
 @app.post("/api/chats")
 def chat(req: ChatRequest):
     return {
-        "reply": f"You said: {req.message}"
+        "reply": response["choices"][0]["message"]["content"]
     }
